@@ -23,14 +23,15 @@ public class Magnet : MonoBehaviour
         {
             var force = forceFactor;
 
+            var playerRigidBody = player.GetComponent<Rigidbody2D>();
             //reduce applied force
-            if (player.GetComponent<playerStats>().magnetShield)
+            if (player.GetComponent<PlayerStatsController>().HasShield)
             {
                 force = force * 0.6f;
             }
 
             //Attract towards magnet
-            player.GetComponent<Rigidbody2D>().AddForce((magnetObject.transform.position - player.transform.position) * force * Time.smoothDeltaTime);
+            playerRigidBody.AddForce((magnetObject.transform.position - player.transform.position) * force * Time.smoothDeltaTime);
             beamRenderer.SetPosition(1, player.GetComponent<Transform>().position);
         }
     }

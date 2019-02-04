@@ -16,7 +16,7 @@ public class Vortex : MonoBehaviour
             var vortexForce = force;
 
             //Reduce force
-            if (playerRigidBody.GetComponent<playerStats>().vortexShield)
+            if (playerRigidBody.GetComponent<PlayerStatsController>().HasShield)
             {
                 vortexForce = vortexForce * 0.6f;
             }
